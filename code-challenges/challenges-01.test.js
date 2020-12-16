@@ -10,12 +10,12 @@ Then, write a function named speaker that takes in a string and a callback funct
 
 const greeting = (word) => {
   // Solution code here...
-  retun word.toUpperCase();
-    console.log(word);
+  return word.toUpperCase();
   };
 
 const speaker = (message, callback) => {
   // Solution code here...
+  return callback(message);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -41,8 +41,8 @@ const addValues = (arr, value) => {
 
 const addNumbers = (num, arr, times, callback) => {
   // Solution code here...
-  for (let i = 0; i < times; i++){
-    callback(arr.push(num));
+  for(let i = 0; i < times; i++){
+    callback(arr, num);
   }
   return arr;
 };
@@ -65,23 +65,17 @@ The inventory is formatted like this:
 This function should use forEach to populate your grocery list based on the store's inventory. If the item is available, add it to your list. Return the final list.
 ------------------------------------------------------------------------------------------------ */
 
-const grocery = [
-  { name: 'apples', available: true },
-  { name: 'pears', available: true },
-  { name: 'oranges', available: false },
-  { name: 'bananas', available: true },
-  { name: 'blueberries', available: false }
-]
-
 const createList = (availableItems) => {
   // Solution code here...
-  grocery.forEach( item => {
-    console.log(item);
-    if(item.available){
-      list.append(item.name);
+  let list = [];
+  availableItems.forEach(function(value){
+    if(value.available === true){
+      list.push(value.name);
     }
-  }
-});
+  });
+
+  return list;
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -99,14 +93,23 @@ Return the resulting output array.
 
 const fizzbuzz = (arr) => {
   // Solution code here...
-  arr.forEach(item => {
-    if (item % 3 === 0 && item % 5 ===0){
-      item = 'Fizz Buzz'
-    } else if (item % 3 === 0) {
-    } else if (item % 3 === 0) {
-    }
-  })
-
+let output = [];
+arr.forEach(function(value) {
+  let wordOne = 'Fizz';
+  let wordTwo = 'Buzz';
+  let bothWords = 'Fizz Buzz';
+  if(value%3===0 & value%5===0) {
+    output.push(bothWords);
+  } else if(value%3===0){
+    output.push(wordOne);
+  } else if(value%5===0){
+    output.push(wordTwo);
+  } else{
+    output.push(parseInt(value));
+  }
+  
+});
+return output;
 };
 
 /* ------------------------------------------------------------------------------------------------
