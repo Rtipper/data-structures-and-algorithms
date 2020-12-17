@@ -28,12 +28,14 @@ CHALLENGE 2
 Write a function named sortBackwards that takes in an array of numbers and returns the same array, with the numbers sorted, highest to smallest.
 ------------------------------------------------------------------------------------------------ */
 
-const sortBackwards = [1,2,3,4,5];
+const sortBackwards = (arr) => {
   // Solution code here...
-  sortBackwards.sort(function(a,b) {
-    return a - b;
+  arr.sort( (a,b) => {
+    return b - a;
+  });
+  return arr;
 
-});
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -47,6 +49,8 @@ For example, ['Alphabet', 'Zebra', 'alphabet', 'carrot'] is correctly sorted.
 
 const alphabetize = (arr) => {
   // Solution code here...
+  arr.sort();
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -57,6 +61,10 @@ Write a function named sortByLength that takes in an array of strings and return
 
 const sortByLength = (arr) => {
   // Solution code here...
+  arr.sort((a,b) => {
+    return a.length-b.length;
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
