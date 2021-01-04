@@ -69,16 +69,19 @@ let $ = createSnippetWithJQuery(`
 </script>
 `);
 
-const templatingWithMustache = (obj) => {
-  // Solution code here...
-  const templateArray = [];
-
-  characters.forEach(character => {
-    let $template = $('#template').html();
-    templateArray.push(Mustache.render($template, character));
+const templatingWithMustache = () => {
+  let tempArray = [];
+  let $template = $('#template').html();
+  characters.forEach(value => {
+    let html = Mustache.render($template, {
+      name: value.name,
+      spouse: value.spouse,
+      children: value.children,
+      house: value.house
+    });
+    tempArray.push(html);
   });
-    return templateArray;
-
+  return tempArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -88,14 +91,16 @@ Write a function named getCourseKeys that takes in the courseInfo object and ret
 
 For example: (['name', 'duration', 'topics', 'finalExam']).
 ------------------------------------------------------------------------------------------------ */
-const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks'},
+const courseInfo = {
+  name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks' },
   topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
   finalExam: true
 };
 
 const getCourseKeys = (obj) => {
   // Solution code here...
-  return Object.keys(courseInfo);
+  let properties = Object.keys(obj);
+  return properties;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -107,8 +112,8 @@ Write a function named getHouses that returns a new array containing the names o
 const getHouses = (arr) => {
   let houses = [];
   // Solution code here...
-  for (let character of arr) {
-    houses.push(character.house);
+  for (let house in characters) {
+    houses.push(characters[house].house);
   }
   return houses;
 };
@@ -127,16 +132,16 @@ hasChildrenValues(characters, 'Sansa') will return false
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
-for (let person of arr) {
-  if(person.name === character) {
-    if(Object.values(person.children).length > 0) {
-      return true;
-      } else {
-        return false;
+  let flagPoint = false;
+  Object.values(arr).forEach(val => {
+    if (val.name === character) {
+      if (val.children.length > 0) {
+        flagPoint = true;
       }
     }
-  }
-  return false;
+  })
+
+  return flagPoint;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -159,6 +164,18 @@ Write a function named totalCharacters that takes in an array and returns the nu
 
 const totalCharacters = (arr) => {
   // Solution code here...
+  let totalChar = [];
+  Object.values(arr).forEach(value => {
+    totalChar.push(value.name);
+    if (value.spouse) {
+      totalChar.push(value.spouse);
+    } if (value.children.length > 0) {
+      value.children.forEach(child => {
+        totalChar.push(child);
+      });
+    }
+  });
+  return totalChar.length;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -174,8 +191,23 @@ For example: [{ house: 'Stark', members: 7 }, { house: 'Arryn', members: 3 }, ..
 const houseSize = (arr) => {
   const sizes = [];
   // Solution code here...
+  let sizeMem = 1;
+  let group = {};
+  Object.values(arr).forEach(value => {
+    if (value.spouse) {
+      sizeMem++;
+    } if (value.children.length > 0) {
+      sizeMem += value.children.length;
+    }
+    group['house'] = value.house;
+    group['members'] = sizeMem;
+    sizes.push(group);
+    sizeMem = 1;
+    group = {};
+  });
   return sizes;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
@@ -273,6 +305,6 @@ xdescribe('Testing challenge 8', () => {
 });
 
 
-function createSnippetWithJQuery(html){
+function createSnippetWithJQuery(html) {
   return cheerio.load(html);
 }
