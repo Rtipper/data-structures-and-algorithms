@@ -153,7 +153,16 @@ You may also use other string or array methods.
 const splitFoods = (recipe) => {
   let result = [];
   // Solution code here...
-  return result;
+  let flag = false
+ Object.entries(arr).forEach(val=>{
+   let object = val[1];
+   if(object.name===character){
+     if(object.children.length>0){
+       flag=true;
+     }
+   }
+ })
+return flag;  
 };
 
 /* ------------------------------------------------------------------------------------------------
