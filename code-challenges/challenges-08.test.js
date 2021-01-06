@@ -36,7 +36,7 @@ For example, oddValues([1,2,3]) returns [1,3].
 
 const oddValues = (arr) => {
   // Solution code here...
-  const arrHolder = arr.filter(val => {
+  const arrHolder = arr.filter(val =>{
     return val % 2 !==0;
   })
   return arrHolder;
@@ -62,7 +62,6 @@ const filterStringsWithVowels = (arr) => {
   return arrHolder;
 };
 
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
@@ -73,7 +72,7 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 
 const notInFirstArray = (forbiddenValues, arr) => {
   // Solution code here...
-  return arr.filter(val =>{
+  return arr.filter(val=>{
     if(forbiddenValues.includes(val)){
 
     }else{
@@ -123,7 +122,7 @@ const snorlaxData = {
 
 const getBaseStatGreaterThan = (arr, minBaseStat) => {
   // Solution code here...
-  return arr.filter(val => {
+  return arr.filter(val=>{
     return val.baseStat > minBaseStat;
   })
 };
@@ -138,13 +137,12 @@ For example, getStatName(snorlaxData.stats, 50) will return ['special-defense', 
 
 const getStatName = (arr, minBaseStat) => {
   // Solution code here...
-  return arr.filter(val => {
+  return arr.filter(val=>{
     return val.baseStat > minBaseStat;
-  }).map(val => {
+  }).map(val =>{
     return val.stat.name;
   });
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
@@ -196,8 +194,9 @@ const characters = [
 
 const getCharactersWithoutChildren = (arr) => {
   // Solution code here...
-  return arr.filter (val => {
+  return arr.filter(val =>{
     if(val.children){
+      //nanda
     }else{
       return true;
     }
@@ -214,6 +213,15 @@ For example: evenOddNumericValues(['Gregor', 2, 4, 1]) returns ['even', 'even', 
 
 const evenOddNumericValues = (arr) => {
   // Solution code here...
+  return arr.filter(val =>{
+    return typeof val !== typeof '';
+  }).map(val =>{
+    if(val%2===0){
+      return 'even';
+    }else if(val%2!==0){
+      return 'odd';
+    }
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
