@@ -23,7 +23,7 @@ const createServer = () => {
 
 function sayHello(request, response){
   // Solution code here...
-  response.send('Hello from the back-end');
+  response.status(200).send('Hello from the back-end');
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -36,10 +36,10 @@ For example, oddValues([1,2,3]) returns [1,3].
 
 const oddValues = (arr) => {
   // Solution code here...
-  const x = arr.filter ( value => {
-    return value % 2 !== 0;
-  });
-  return x;
+  const arrHolder = arr.filter(val => {
+    return val % 2 !==0;
+  })
+  return arrHolder;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -55,14 +55,11 @@ For example, filterStringsWithVowels('gregor','hound','xyz') returns ['gregor', 
 
 const filterStringsWithVowels = (arr) => {
   // Solution code here...
-  const vowels = ['a', 'e', 'i', 'o', 'u'];
-  arr.filter( word => {
-    for (let i = 0; i < word.length; i++){
-      if (vowels.includes(word[i])){
-        return 
-      }
-    }
+  const arrHolder = arr.filter(val =>{
+    let regex= /a|e|i|o|u/g;
+    return val.match(regex);
   })
+  return arrHolder;
 };
 
 
@@ -76,6 +73,13 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 
 const notInFirstArray = (forbiddenValues, arr) => {
   // Solution code here...
+  return arr.filter(val =>{
+    if(forbiddenValues.includes(val)){
+
+    }else{
+      return true;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -119,6 +123,9 @@ const snorlaxData = {
 
 const getBaseStatGreaterThan = (arr, minBaseStat) => {
   // Solution code here...
+  return arr.filter(val => {
+    return val.baseStat > minBaseStat;
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -131,6 +138,11 @@ For example, getStatName(snorlaxData.stats, 50) will return ['special-defense', 
 
 const getStatName = (arr, minBaseStat) => {
   // Solution code here...
+  return arr.filter(val => {
+    return val.baseStat > minBaseStat;
+  }).map(val => {
+    return val.stat.name;
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -184,6 +196,12 @@ const characters = [
 
 const getCharactersWithoutChildren = (arr) => {
   // Solution code here...
+  return arr.filter (val => {
+    if(val.children){
+    }else{
+      return true;
+    }
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
