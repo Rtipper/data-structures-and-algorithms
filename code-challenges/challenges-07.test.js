@@ -21,6 +21,7 @@ let $ = createSnippetWithJQuery(`
 
 const addTea = () => {
   // Solution code here...
+  $('ul').append('<li>tea</li>');
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -35,6 +36,11 @@ For example, twoToThe([1,2,3]) returns [2,4,8] because 2 ^ 1 = 2, 2 ^ 2 = 4, and
 
 const forLoopTwoToThe = (arr) => {
   // Solution code here...
+  const holdArr = [];
+  for (let i = 0; i , arr.length; i++) {
+    holdArr.push(Math.pow(2, arr[i]));
+  }
+  return holdArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -45,6 +51,11 @@ Write a function named forEachTwoToThe that produces the same output as your for
 
 const forEachTwoToThe = (arr) => {
   // Solution code here...
+  const holdArr = [];
+  arr.forEach(val => {
+    holdArr.push(Math.pow(2, val));
+  })
+  return holdArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -55,6 +66,11 @@ Write a function named mapTwoToThe that produces the same output as your forLoop
 
 const mapTwoToThe = (arr) => {
   // Solution code here...
+  const toThePower = arr.map(val => {
+    return Math.pow(2, val);
+  })
+  return toThePower;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -69,6 +85,10 @@ For example: charCode(['h','i']) returns [104, 105].
 
 const charCode = (arr) => {
   // Solution code here...
+  const utfCode = arr.map(val => {
+    return val.charCodeAt();
+  });
+  return utfCode;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -83,6 +103,16 @@ For example: evenOdd([1,2,3]) returns ['odd','even','odd'].
 
 const evenOdd = (arr) => {
   // Solution code here...
+  const oddEven = arr.map(val => {
+    if (typeof (val) === typeof ('string')) {
+      return 'N/A';
+    } else if (val % 2 === 0) {
+      return 'even';
+    } else {
+      return 'odd';
+    }
+  })
+  return oddEven;
 };
 
 /* ------------------------------------------------------------------------------------------------
