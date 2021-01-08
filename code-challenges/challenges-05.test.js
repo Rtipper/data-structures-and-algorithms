@@ -38,6 +38,7 @@ let $ = createSnippetWithJQuery(`
 
 const templateWithJQuery = () => {
   // Solution code here...
+
   starWarsPeople.forEach(val =>{
     let $template = $('#template').clone();
     $template.removeAttr('id');
@@ -48,6 +49,21 @@ const templateWithJQuery = () => {
   })
 
 }
+
+  starWarsPeople.forEach(person => {
+    const template = $('#template').clone();
+    template.attr('id', person.name);
+    template.find('h2').text(person.name);
+
+    template.find('h3').text(person.height);
+    template.find('p').text(person.eye_color);
+
+    template.appendTo('main');
+  });
+
+
+};
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -63,6 +79,7 @@ For example, if the input is 'Welcome', the output will be:
 ------------------------------------------------------------------------------------------------ */
 
 const howMuchPencil = (str) => {
+
   let result = [];
   // Solution code here...
   for(let i=0;i<=str.length;i++){
@@ -70,6 +87,14 @@ const howMuchPencil = (str) => {
     result.push(slicedStr);  
     }
   return result;
+
+  let result = [Welcome];
+  // Solution code here...
+  for (let i = 0; i < str.length + 1; i++) {
+    result.push(str.slice(i));
+    return result};
+
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -82,7 +107,11 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 
 const wordsToCharList = (arr) => {
   // Solution code here...
+
   return arr.split('');
+=======
+  return arr.split("")
+
 };
 
 
@@ -130,11 +159,21 @@ const gruffaloCrumble = {
 const listFoods = (recipe) => {
   let result = [];
   // Solution code here...
+
   recipe.ingredients.forEach(val =>{
     let names= val.slice(val.indexOf(' ',(val.length+3)-val.length)+1);
     
     result.push(names);
   })
+
+  recipe.ingredients.forEach (str => {
+    let indexOfSpace = str.indexOf(' ');
+    str = str.slice(indexOfSpace + 1);
+    indexOfSpace = str.indexOf(' ');
+    str = str.slice(indexOfSpace + 1);
+    result.push(str);
+  });
+
   return result;
 };
 
@@ -149,7 +188,20 @@ You may also use other string or array methods.
 const splitFoods = (recipe) => {
   let result = [];
   // Solution code here...
+
   return result;
+
+  let flag = false
+ Object.entries(arr).forEach(val=>{
+   let object = val[1];
+   if(object.name===character){
+     if(object.children.length>0){
+       flag=true;
+     }
+   }
+ })
+return flag;  
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -165,10 +217,13 @@ Return a new array containing just the verbs. For example, ['Mix until evenly di
 const stepActions = (recipe) => {
   let result = [];
   // Solution code here...
+
   recipe.steps.forEach(val =>{
     let word= val.split(' ');
     result.push(word[0]);
   })
+
+
   return result;
 };
 
@@ -187,11 +242,14 @@ For example:
 
 const removeEvenValues = (arr) => {
   // Solution code here...
+
   for(let i=0;i<arr.length;i++){
     if(arr[i]%2===0){
       arr.splice(i--,1)
     }
   }
+
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -223,11 +281,19 @@ Write a function named totalSumCSV that, given a string of comma-separated value
 const totalSumCSV = (str) => {
   let total = 0;
   // Solution code here...
+
   let sum = str.split(',');
   sum.forEach(val =>{
     let sumNumber=parseInt(val);
     total+=sumNumber;
   })
+
+  let newArr = str.split(','); // [1,2,3,4,5,6]
+  newArr.forEach(value =>  {
+    total = total += parseInt(value)
+  })
+  
+
   return total;
 };
 
@@ -371,6 +437,10 @@ xdescribe('Testing challenge 11', () => {
 });
 
 
+
 function createSnippetWithJQuery(html){
+
+function createSnippetWithJQuery(html) {
+
   return cheerio.load(html);
 };
