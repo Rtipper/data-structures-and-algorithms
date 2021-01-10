@@ -27,7 +27,6 @@ const createServer = () => {
 
   // Routes go here
   // Solution code here...
-  app.get('/events',getCurrentEvents);
 
   var server = app.listen(3301, function () {
     var port = server.address().port;
@@ -162,25 +161,25 @@ const currentEvents = {
 
 function getCurrentEvents(request, response){
   // Solution code here...
-response.status(200).send(mapCurrentEvents());
+  response.status(200).send(mapCurrentEvents());
 }
 
 const mapCurrentEvents = () => {
   // Solution code here...
-  const holder = currentEvents.news.map(val => {
-    return new Event(val);
+  const holder = currentEvents.news.map(val=>{
+        return new Event(val);
   })
   return holder;
 }
 
 function Event(obj){
   // Solution code here...
-  this.author = obj.author;
-  this.categories = obj.category;
-  this.summary = obj.description;
-  this.img_url = obj.image;
-  this.date = obj.published;
-  this.title = obj.title;
+  this.author=obj.author;
+  this.categories= obj.category;
+  this.summary= obj.description;
+  this.img_url= obj.image;
+  this.date= obj.published;
+  this.title= obj.title;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -193,7 +192,7 @@ Note: You may not use the array's built-in length property.
 
 const countNumberOfElements = (arr) => {
   // Solution code here...
-  const holder = arr.reduce((acc,val,idx) => {
+  const holder = arr.reduce((acc,val,idx) =>{
     acc++;
     return acc;
   },0)
@@ -262,7 +261,7 @@ const returnNames = (arr) => {
     acc.push(val.name);
     return acc;
   },[]);
-  return holder
+  return holder;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -276,10 +275,10 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 const reversedString = (str) => {
   // Solution code here...
   const stringArr = str.split('');
-  const holder = stringArr.reduce((acc,val,idx) => {
+  const holder = stringArr.reduce((acc, val,idx) =>{
     acc.unshift(val);
     return acc;
-},[]);
+  },[]);
   return holder.join('');
 };
 
@@ -334,9 +333,13 @@ const characters = [
 
 const countNumberOfChildren = (arr) => {
   // Solution code here...
-  const holder = arr.reduce((acc,val,idx)=> {
-    const holderArr = val.children;
-    acc+= holderArr.length;
+  const holder = arr.reduce((acc,val,idx)=>{
+    const holderArr= val.children;
+    if(!holderArr){
+      
+    }else{
+      acc+=holderArr.length;
+    }
     return acc;
   },0);
   return holder;
@@ -352,6 +355,15 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 
 const calculateAverage = (arr) => {
   // Solution code here...
+  const holder= arr.reduce((acc,val,idx)=>{
+    acc+=val;
+    if(idx===arr.length-1){
+      acc= acc/arr.length;
+    }
+    
+    return acc;
+  },0)
+  return holder;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -373,6 +385,13 @@ const isPrime = (value) => {
 
 const countPrimeNumbers = (arr) => {
   // Solution code here...
+  const holder = arr.reduce((acc,val,idx) => {
+    if(isPrime(val)){
+      acc++;
+    }
+    return acc;
+  },0);
+  return holder;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -416,6 +435,18 @@ const snorlaxData = {
 
 const extractStat = (statName, arr) => {
   // Solution code here...
+  let flag = true;
+  const holder = arr.reduce((acc,val,idx) => {
+    if(statName === val.stat.name){
+      acc = val;
+      flag = false;
+    }
+    if(flag){
+      acc = null;
+    }
+    return acc;
+  },{})
+  return holder;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -430,6 +461,20 @@ Write a function named extractChildren that, given the array of characters from 
 
 const extractChildren = (arr) => {
   // Solution code here...
+  const filtherARR = arr.filter(val=>{
+    let regex=/A|a/g;
+    
+      return val.name.match(regex);
+  });
+  const reduceChilden= filtherARR.reduce((acc,val,idx)=>{
+    if(val.children){
+      val.children.forEach(val=>{
+        acc.push(val);
+      })
+    }
+    return acc;
+  },[])
+ return reduceChilden; 
 };
 
 /* ------------------------------------------------------------------------------------------------
