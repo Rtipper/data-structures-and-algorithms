@@ -54,8 +54,12 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 
 const validateEmail = (email) => {
   // Solution code here...
-  let regex = /^([a-z0-9]+|[a-z0-9]+\.[a-z0-9]+)@[a-z0-9]+\.(net|com|org)+$/g;
-  return regex.test(email);
+  let regex = /^([?a-zA-Z0-9-]+).(([?a-zA-Z0-9-]+))\@([?a-zA-Z0-9-]+)(.net|.com|.org)$/gm;
+  if(email.match(regex)){
+    return true;
+  } else{
+    return false;
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -81,8 +85,9 @@ Return either true or false.
 
 const validatePhoneNumber = (phoneNumber) => {
   // Solution code here...
-  if (/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/.test(phoneNumber));
-    return true;
+  let regex= /^(\([\d]{3}\)|[\d]{3})[\s-]?[\d]{3}[\s-]?[\d]{4}$/gm;
+  let str = phoneNumber.toString();
+  return  str.match(regex) ? true : false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -96,7 +101,16 @@ findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>'])
 
 const findTagNames = elements => {
   // Solution code here...
-};
+  const emptyArr=[];
+  elements.forEach(val =>{
+     let regex = /[/]\w+/gm;
+     let holderTwo = val.match(regex);
+     holderTwo.forEach(val=>{
+       emptyArr.push(val);
+     });
+   });
+   return emptyArr;
+ };
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
