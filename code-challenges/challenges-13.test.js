@@ -21,6 +21,7 @@ const $ = createSnippetWithJQuery(`
 
 const fixTheTypo = () => {
 // Solution code here...
+  $('.pear').text('Pear');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -33,10 +34,10 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['t', 
 
 const firstLetters = (arr) => {
   // Solution code here...
-  let words = arr.filter(str => {
-    return str.substr(0, 7, 14);
+  const words = arr.map(val=>{
+    return val[0];
   });
-    return words;
+  return words;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -65,6 +66,13 @@ For example, (123) 456-7890 returns 1234567890
 
 const standardizePhoneNumbers = (arr) => {
   // Solution code here...
+  const numbers = arr.reduce((acc,val)=>{
+    const strNumbers =val.slice(1,4)+val.slice(6,9)+val.slice(10,14);
+    acc.push(strNumbers);
+    return acc;
+  },[]);
+
+  return numbers;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -77,8 +85,14 @@ For example, 'abcdefg' returns 'bdf'
 
 const onlyOddChars = (str) => {
   // Solution code here...
+  let strChars= '';
+  for(let i =0;i<str.length;i++){
+    if(i%2){
+      strChars+=str[i];
+    }
+  }
+  return strChars;
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6 - Stretch Goal
 
@@ -87,6 +101,14 @@ Write a function named allHappy that takes in an array of strings and returns a 
 
 const allHappy = (arr) => {
   // Solution code here...
+  const happy = arr.reduce((acc,val)=>{
+    if(!val.includes(':)')){
+      acc=false;
+    }
+    return acc;
+  },true);
+
+  return happy;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -107,6 +129,14 @@ Write a function named findEvery that takes in an array of strings, along with a
 
 const findEvery = (arr, target) => {
   // Solution code here...
+  const every = arr.reduce((acc,val)=>{
+    if(!val.includes(target )){
+      acc=false;
+    }
+    return acc;
+  },true);
+
+  return every;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -123,6 +153,15 @@ For example, [['Brook Testing', 'Actual Person'], ['Human Person', 'Brook again'
 
 const unenrollBrook = (arr) => {
   // Solution code here...
+  const course = arr.reduce((acc,val)=>{
+    const x = val.filter(val=>{
+      return !val.includes('Brook');
+    });
+    acc.push(x);
+    return acc;
+  },[])
+
+  return course;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -162,6 +201,12 @@ For example, ['abcd', 'efgh', 'ijkl', 'mnop'] returns ['a', 'f', 'k', 'p']
 
 const characterByIndex = (arr) => {
   // Solution code here...
+    const day = arr.reduce((acc,val,idx)=>{
+      acc.push(val[idx]);
+      return acc;
+    },[])
+  
+    return day;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -213,7 +258,7 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should only return the odd indexed characters from the string', () => {
     expect(onlyOddChars('0123456789')).toStrictEqual('13579');
     expect(onlyOddChars('abcd')).toStrictEqual('bd');
@@ -222,7 +267,7 @@ xdescribe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should correctly assess whether all the strings are happy', () => {
     const words = ['things', 'apple (:)', ':)banana', 'missing that thing', 'cant:)aloupe'];
 
@@ -232,7 +277,7 @@ xdescribe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should find all the strings that contain a given string', () => {
     const words = ['things', 'apple (:)', ':)banana', 'missing that thing', 'cant:)aloupe'];
 
@@ -241,7 +286,7 @@ xdescribe('Testing challenge 7', () => {
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should determine whether all the strings contain a given string', () => {
     const words = ['things', 'apple pie (:)', ':)banana pie', 'missing that thing', 'cant:)aloupe is tasty'];
 
@@ -251,7 +296,7 @@ xdescribe('Testing challenge 8', () => {
   });
 });
 
-xdescribe('Testing challenge 9', () => {
+describe('Testing challenge 9', () => {
   test('It should remove Brook from all courses', () => {
     const roster = [
       ['Michelle', 'Allie', 'Brook TESTING'],
@@ -269,7 +314,7 @@ xdescribe('Testing challenge 9', () => {
   });
 });
 
-xdescribe('Testing challenge 10', () => {
+describe('Testing challenge 10', () => {
   test('It should sort events by the day on which they happen', () => {
     const events = ['Dancing on Mondays and Tuesdays', 'Meet the inventors! Monday, August 7', 'in the club on a Tuesday', 'Thursday Night Code', 'Saturday Night Fever'];
     const sortedEvents = sortByDay(events);
@@ -293,7 +338,7 @@ xdescribe('Testing challenge 10', () => {
   });
 });
 
-xdescribe('Testing challenge 11', () => {
+describe('Testing challenge 11', () => {
   test('It should return the ith character of the ith string', () => {
     const words = ['apple', 'banana', 'cantaloupe'];
 
