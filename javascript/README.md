@@ -6,6 +6,15 @@
 
 Each type of code challenge has slightly different instructions. Please refer to the notes and examples below for instructions for each DS&A assignment type.
 
+### TABLE OF CONTENTS | 
+
+### Code Challenge 1 - arrayReverse
+- reverse the order of an array
+
+
+### Code Challenge 2 - arrayShift
+- shift an element from outside an array into the center index of the original array
+
 ### Data Structure: New Implementation
 
 - Create a new folder under the `javascript` level, with the name of the data structure and complete your implementation there
