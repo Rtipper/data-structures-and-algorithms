@@ -1,6 +1,6 @@
 'use strict';
 
-const LL = require('./linkedList/lib/linked-list.js');
+const LL = require('../../lib/linked-list.js');
 
 describe('LINKED LIST', () => {
 
