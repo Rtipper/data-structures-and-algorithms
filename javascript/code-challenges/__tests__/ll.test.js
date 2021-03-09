@@ -12,7 +12,7 @@ describe('LINKED LIST', () => {
   it('should add items to the list', () => {
     let list = new LL();
     let first = 'red';
-    LL.insert(first);
+    list.insert(first);
     expect(list.head.value).toEqual(val);
   });
 
