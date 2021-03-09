@@ -1,14 +1,13 @@
 'use strict';
 
-const LinkedList = require('./lib/ll.js');
+const LinkedList = require('./lib/linked-list.js');
 
 let ll = new LinkedList();
 
-ll.append('red');
-ll.append('orange');
-ll.append('yellow');
-ll.append('green');
-ll.append('blue');
-ll.append('purple');
-
-console.log(ll);
+console.log(ll.insert('red'));
+console.log(ll.insert('orange'));
+console.log(ll.insert('yellow'));
+console.log(ll.insert('green'));
+console.log(ll.insert('blue'));
+console.log(ll.includes('blue'));
+console.log(ll.toString());
