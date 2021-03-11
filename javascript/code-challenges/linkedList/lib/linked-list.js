@@ -1,6 +1,5 @@
 'use strict';
 
-const { Interface } = require('node:readline');
 const Node = require('./node.js');
 
 class LinkedList {
