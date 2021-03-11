@@ -1,6 +1,6 @@
 'use strict';
 
-const LL = require('../../lib/linked-list.js');
+const LL = require('../linkedList/lib/linked-list.js');
 
 describe('LINKED LIST', () => {
 
@@ -80,6 +80,6 @@ describe('LINKED LIST', () => {
 
   it('will return false for an empty LinkedList', () => {
     let list = new LL();
-    expect(list.includeds(1)).toBeFalsy();
+    expect(list.includes(1)).toBeFalsy();
   });
 });

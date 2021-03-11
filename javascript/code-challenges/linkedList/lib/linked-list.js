@@ -15,12 +15,12 @@ class LinkedList {
     } else {
       let previousHead = this.head;
 
-      this.head.next - previousHead;
+      this.head.next = previousHead;
     }
     return this;
   }
 
-  include(value) {
+  includes(value) {
     if (!this.head) {
       return false;
     }
