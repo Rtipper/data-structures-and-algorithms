@@ -3,6 +3,9 @@ Today we are creating our first linked lists based off of the in class demo prov
 
 ## Challenge
 Create a Node class that has properties for the value stored in the Node, and a pointer to the next Node.
+---------------
+CC6 Update
+Refactor to include .append, .insertBefore & .insertAfter.
 
 ## Approach & Efficiency
 Ref. demo code to ensure that the basic info for what is required for a linked list in implemented.
@@ -13,7 +16,11 @@ Make sure tests are working locally
 - .instert()
 - .includes()
 - .toString()
+- .append()
+- .insertBefore()
+- .insertAfter()
 
 ## Solution
 <!-- Embedded whiteboard image -->
 ![WhiteBoard](./whiteboard_linkedlists.png)
+![WhiteBoard](./whiteboard_linkedlists_CC6.png)

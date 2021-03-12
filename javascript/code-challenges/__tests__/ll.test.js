@@ -83,3 +83,28 @@ describe('LINKED LIST', () => {
     expect(list.includes(1)).toBeFalsy();
   });
 });
+
+// NEW TESTS -- CODE CHALLENGE 6
+
+describe('LinkedList INSERTION TESTS', () => {
+
+  it('Will add a node to the end of the list', () => {
+    let list = new LL();
+    list.append('red').append('orange');
+    expect(list.head.next.value).toBe('orange');
+  });
+
+  it('Will insert a node before the first node within the list', () => {
+    let list = new LL();
+    list.append('red').append('orange').append('yellow').append('green').append('blue');
+    list.insertBefore('red', 'pink');
+    expect(list.head.value).toBe('pink');
+  });
+
+  it('Will insert a node after the very last node within the list', () => {
+    let list = new LL();
+    list.append('red').append('orange').append('yellow').append('green').append('blue');
+    list.insertAfter('blue', 'pink');
+    expect(list.toString()).toBe('{ red } -> { orange } -> { yellow } -> { green } -> { blue } -> { pink } NULL');
+  });
+});
