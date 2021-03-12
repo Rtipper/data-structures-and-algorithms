@@ -75,7 +75,7 @@ describe('LINKED LIST', () => {
     list.insert(thirdColor);
     list.insert(fourthColor);
     list.insert(fithColor);
-    expect(list.toString()).toEqual('{ red } -> { orange } -> { yellow } -> { green } -> { blue } -> NULL');
+    expect(list.toString()).toEqual('{ blue } -> { green } -> { yellow } -> { orange } -> { red } -> NULL');
   });
 
   it('will return false for an empty LinkedList', () => {
