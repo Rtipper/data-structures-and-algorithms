@@ -11,15 +11,15 @@ describe('LINKED LIST', () => {
 
   it('should add items to the list', () => {
     let list = new LL();
-    let first = 'red';
-    list.insert(first);
+    let val = 'red';
+    list.insertStart(val);
     expect(list.head.value).toEqual(val);
   });
 
   it('Head will direct to node #1 in the list', () => {
     let list = new LL();
-    let first = "red";
-    let nextNode = list.inster(first);
+    let val = "red";
+    let nextNode = list.insertStart(val);
     expect(list.head.value).toEqual('red');
   });
 
@@ -105,6 +105,6 @@ describe('LinkedList INSERTION TESTS', () => {
     let list = new LL();
     list.append('red').append('orange').append('yellow').append('green').append('blue');
     list.insertAfter('blue', 'pink');
-    expect(list.toString()).toBe('{ red } -> { orange } -> { yellow } -> { green } -> { blue } -> { pink } NULL');
+    expect(list.toString()).toBe('{ red } -> { orange } -> { yellow } -> { green } -> { blue } -> { pink } -> NULL');
   });
 });
