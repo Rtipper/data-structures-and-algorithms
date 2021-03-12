@@ -60,7 +60,7 @@ describe('LINKED LIST', () => {
     list.insert(thirdColor);
     list.insert(fourthColor);
     list.insert(fithColor);
-    expect(list.includes('purple')).toEqual(false);
+    expect(list.includes('pink')).toEqual(false);
   });
 
   it('Will return all the specific colors within the linked list as a string', () => {

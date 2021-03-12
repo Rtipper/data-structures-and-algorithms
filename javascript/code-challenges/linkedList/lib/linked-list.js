@@ -93,8 +93,8 @@ class LinkedList {
   }
 
   toString() {
-    let string = '';
     let current = this.head;
+    let string = ''
     while (current) {
       string += `{ ${current.value} } -> `;
 

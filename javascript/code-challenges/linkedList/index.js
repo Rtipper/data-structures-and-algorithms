@@ -6,7 +6,7 @@ let ll = new LinkedList();
 
 // CONSOLE LOGS -- CODE CHALLENGE 6
 console.log(ll.append('red').append('orange').append('yellow').append('green').append('blue'));
-console.log(ll.insterAfter('red', 'blue'));
+console.log(ll.insterAfter('blue', 'pink'));
 console.logt(ll.toString());
 
 // CONSOLE LOGS -- CODE CHALLENGE 5
