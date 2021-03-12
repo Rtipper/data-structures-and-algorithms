@@ -12,14 +12,14 @@ describe('LINKED LIST', () => {
   it('should add items to the list', () => {
     let list = new LL();
     let val = 'red';
-    list.insertFront(val);
+    list.insert(val);
     expect(list.head.value).toEqual(val);
   });
 
   it('Head will direct to node #1 in the list', () => {
     let list = new LL();
     let val = "red";
-    let nextNode = list.insertFront(val);
+    let nextNode = list.insert(val);
     expect(list.head.value).toEqual('red');
   });
 
@@ -27,8 +27,8 @@ describe('LINKED LIST', () => {
     let list = new LL();
     let firstColor = 'red';
     let secondColor = 'orange';
-    list.insertFront(firstColor);
-    list.insertFront(secondColor);
+    list.insert(firstColor);
+    list.insert(secondColor);
     expect(list.head.value).toEqual(secondColor);
     expect(list.head.next.value).toEqual(firstColor);
   })
@@ -40,11 +40,11 @@ describe('LINKED LIST', () => {
     let thirdColor = 'yellow';
     let fourthColor = 'green';
     let fithColor = 'blue';
-    list.insertFront(firstColor);
-    list.insertFront(secondColor);
-    list.insertFront(thirdColor);
-    list.insertFront(fourthColor);
-    list.insertFront(fithColor);
+    list.insert(firstColor);
+    list.insert(secondColor);
+    list.insert(thirdColor);
+    list.insert(fourthColor);
+    list.insert(fithColor);
     expect(list.includes(fithColor)).toEqual(true);
   });
 
@@ -55,11 +55,11 @@ describe('LINKED LIST', () => {
     let thirdColor = 'yellow';
     let fourthColor = 'green';
     let fithColor = 'blue';
-    list.insertFront(firstColor);
-    list.insertFront(secondColor);
-    list.insertFront(thirdColor);
-    list.insertFront(fourthColor);
-    list.insertFront(fithColor);
+    list.insert(firstColor);
+    list.insert(secondColor);
+    list.insert(thirdColor);
+    list.insert(fourthColor);
+    list.insert(fithColor);
     expect(list.inculdes('purple')).toEqual(false);
   });
 
@@ -70,11 +70,11 @@ describe('LINKED LIST', () => {
     let thirdColor = 'yellow';
     let fourthColor = 'green';
     let fithColor = 'blue';
-    list.insertFront(firstColor);
-    list.insertFront(secondColor);
-    list.insertFront(thirdColor);
-    list.insertFront(fourthColor);
-    list.insertFront(fithColor);
+    list.insert(firstColor);
+    list.insert(secondColor);
+    list.insert(thirdColor);
+    list.insert(fourthColor);
+    list.insert(fithColor);
     expect(list.toString()).toEqual('{ red } -> { orange } -> { yellow } -> { green } -> { blue } -> NULL');
   });
 

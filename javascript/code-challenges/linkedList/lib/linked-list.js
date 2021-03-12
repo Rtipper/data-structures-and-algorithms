@@ -7,6 +7,18 @@ class LinkedList {
     this.head = null;
   }
 
+  insert(value) {
+    let node = new Node(value);
+    if (!this.head) {
+      this.head = node;
+    } else {
+      let previousHead = this.head;
+      this.head = node;
+      this.head.next = previousHead;
+    }
+    return this;
+  }
+
   // APPEND -- CODE CHALLENGE 6
   append(value) {
     let node = new Node(value);

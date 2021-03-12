@@ -13,7 +13,7 @@ Create a whiteboard to help with the learning/understanding/scaffolding process
 Make sure tests are working locally
 
 ## API
-- .instert()
+- .insert()
 - .includes()
 - .toString()
 - .append()
