@@ -108,3 +108,11 @@ describe('LinkedList INSERTION TESTS', () => {
     expect(list.toString()).toBe('{ red } -> { orange } -> { yellow } -> { green } -> { blue } -> { pink } -> NULL');
   });
 });
+
+// NEW TESTS -- CODE CHALLENGE 7
+it('Will find the kth node at the end of the list', () => {
+  let list = new LL();
+  list.push('red').push('orange').push('yellow').push('green').push('blue');
+  list.kthFromEnd('blue', 'yellow');
+  expect(list.head.next.vlaue).toBe('blue');
+})
