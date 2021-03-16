@@ -57,7 +57,7 @@ class LinkedList {
   }
 
   // INSERT AFTER -- CODE CHALLENGE 6
-  insertAfter (value, newValue) {
+  insertAfter(value, newValue) {
     let current = this.head;
     let node = new Node(newValue);
     if (!this.head) {
@@ -103,25 +103,30 @@ class LinkedList {
     string += 'NULL';
     return string;
   }
-}
 
 // CODE CHALLENGE 7 - KTH NODE FROM END
-function kthFromEnd(sll, k){
-  var node = sll.head,
-  i = 1,
-  kthNode,
-  if(k<=0) return;
-  
-  while (node){
-    if(i === k) kthNode = sll.head;
-    else if(i-k>0){
-      kthNode = kthNode.next;
-    }
-    i++
-
-    node = node.next;
+kthFromEnd(k) {
+  let current = this.head;
+  let counter = this.head;
+  let length = 0;
+  while (counter) {
+    length++;
+    counter = counter.next;
   }
-  return kthNode;
+  while (current) {
+    if (length < k) {
+      console.log('List too small, try again');
+      return false;
+    }
+    if (length - 1 === k) {
+      console.log(current.value);
+      return current.value;
+    }
+    length--;
+    current = current.next;
+  }
+  return false;
+  }
 }
 
 module.exports = LinkedList;

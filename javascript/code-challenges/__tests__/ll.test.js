@@ -110,9 +110,25 @@ describe('LinkedList INSERTION TESTS', () => {
 });
 
 // NEW TESTS -- CODE CHALLENGE 7
-it('Will find the kth node at the end of the list', () => {
-  let list = new LL();
-  list.push('red').push('orange').push('yellow').push('green').push('blue');
-  list.kthFromEnd('blue', 'yellow');
-  expect(list.head.next.vlaue).toBe('blue');
-})
+
+// it('Will find the kth node at the end of the list', () => {
+//   let list = new LL();
+//   list.push('red').push('orange').push('yellow').push('green').push('blue');
+//   list.kthFromEnd('blue', 'yellow');
+//   expect(list.head.next.vlaue).toBe('blue');
+// })
+
+describe('LL Kth-From-End Tests', () => {
+  
+  it('Will return false if "k" is greater than the length of the list', () => {
+    let list = new LL();
+    list.append('red').append('orange').append('yellow').append('green').append('blue');
+    expect(list.kthFromEnd('white')).toBeFalsy();
+  });
+
+  it('Will return false if "k" is the same length as the linked list', () => {
+    let list = new LL();
+    list.append('red').append('orange').append('yellow').append('green').append('blue');
+    expect(list.kthFromEnd('teal')).toBeFalsy();
+  });
+});
