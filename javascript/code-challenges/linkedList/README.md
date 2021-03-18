@@ -24,6 +24,7 @@ Make sure tests are working locally
 <!-- Embedded whiteboard image -->
 ![WhiteBoard](./whiteboard_linkedlists.png)
 ![WhiteBoard](./whiteboard_linkedlists_CC6.png)
+![WhiteBoard](./whiteboard_linkedlists_CC8.png)
 
 ### REF DOCS
 - CC7: https://www.thatjsdude.com/interview/linkedList.html#kthNodeFromEnd
