@@ -6,6 +6,9 @@ Create a Node class that has properties for the value stored in the Node, and a 
 ---------------
 CC6 Update
 Refactor to include .append, .insertBefore & .insertAfter.
+---------------
+CC8 Update
+Refactor / add zip.js to zip two LL together as well as include .length in linked-list.js + tests
 
 ## Approach & Efficiency
 Ref. demo code to ensure that the basic info for what is required for a linked list in implemented.
@@ -19,6 +22,7 @@ Make sure tests are working locally
 - .append()
 - .insertBefore()
 - .insertAfter()
+- .length()
 
 ## Solution
 <!-- Embedded whiteboard image -->
