@@ -127,6 +127,17 @@ kthFromEnd(k) {
   }
   return false;
   }
+
+// CODE CHALLENGE 8
+length() {
+  let counter = this.head;
+  let length = 0;
+  while (counter) {
+    counter = counter.next;
+    length++;
+  }
+  return length;
+  }
 }
 
 module.exports = LinkedList;
