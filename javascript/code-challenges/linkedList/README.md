@@ -6,6 +6,9 @@ Create a Node class that has properties for the value stored in the Node, and a 
 ---------------
 CC6 Update
 Refactor to include .append, .insertBefore & .insertAfter.
+---------------
+CC7 Update
+Refactor current code and include .kthFromEnd() in order to get the node's value based on "k". Include test to verify. 
 
 ## Approach & Efficiency
 Ref. demo code to ensure that the basic info for what is required for a linked list in implemented.
@@ -19,11 +22,13 @@ Make sure tests are working locally
 - .append()
 - .insertBefore()
 - .insertAfter()
+- .kthFromEnd()
 
 ## Solution
 <!-- Embedded whiteboard image -->
 ![WhiteBoard](./whiteboard_linkedlists.png)
 ![WhiteBoard](./whiteboard_linkedlists_CC6.png)
+![WhiteBoard](./whiteboard_linkedlists_CC7.png)
 
 ### REF DOCS
 - CC7: https://www.thatjsdude.com/interview/linkedList.html#kthNodeFromEnd
