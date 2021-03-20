@@ -144,6 +144,10 @@ const snorlaxAbilities = {
 
 const extractAbilities = (arr) => {
   // Solution code here...
+  const pokeMoves = arr.map(value => {
+    return value.ability.name;
+  });
+  return pokeMoves;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -187,6 +191,13 @@ const snorlaxStats = {
 
 const extractStats = (arr) => {
   // Solution code here...
+  const pokeStats = arr.map(value => {
+    return {
+      name: value.stat.name,
+      total: (value.baseStat + value.effort)
+    };
+  });
+  return pokeStats;
 };
 
 /* ------------------------------------------------------------------------------------------------
