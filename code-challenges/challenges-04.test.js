@@ -144,6 +144,8 @@ For example, 'Welcome to Code 301!' will return 'W_lc_m_ t_ C_d_ 301!'.
 
 let hangman = (str) => {
   // Solution code here...
+  let regex = /(a|e|i|o|u)/ig;
+  return str.replace(regex, '_');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -160,6 +162,8 @@ const seashells = 'She sells seashells by the seashore. The shells she sells are
 
 const findShells = (str) => {
   // Solution code here...
+  let regex = /[\w]+ells/g;
+  return str.match(regex);
 };
 
 /* ------------------------------------------------------------------------------------------------
