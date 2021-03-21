@@ -42,7 +42,12 @@ For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyv
 
 const toTitleCase = (arr) => {
   // Solution code here...
- 
+  const t = arr.reduce((acc, value) => {
+    const y = value.charAt(0).toUpperCase() + value.slice(1);
+    acc.push(y);
+    return acc;
+  }, []);
+  return t;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -118,6 +123,14 @@ let starWarsData = [{
 
 let biggerThanLuke = (arr) => {
   // Solution code here...
+  const lukeMass = 77;
+  const l = arr.reduce((acc, value) => {
+    if (value.mass > lukeMass) {
+      acc.push(value.name);
+    }
+    return acc;
+  }, []);
+  return l.join(' - ');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -136,6 +149,8 @@ This data could be sorted by name or price.
 
 const sortBy = (property, arr) => {
   // Solution code here...
+  const s = arr.sort((a, b) => (a[property] > b[property]) ? 1 : -1);
+  return s;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -152,6 +167,8 @@ https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
   // Solution code here...
+  let regex = /https\:\/\//gi;
+  return url.match(regex) ? true : false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -175,6 +192,68 @@ Here is a sample board:
 
 const detectTicTacToeWin = (board) => {
   // Solution code here...
+  let result = false;
+  for (let i = 0; i < board.length; i++) {
+    if (!result) {
+      result = helperFunc(board[i]);
+    }
+  }
+
+  if (result) {
+    return result;
+  } else {
+    // vertical
+    result = anotherHelperFunc(board);
+    return result;
+  }
+};
+
+function helperFunc(board) {
+  if (board[0] === board[1] === board[2]) {
+    if (board[0] === '') {
+      return false;
+    } else {
+      return true;
+    }
+  } else {
+    return false;
+  }
+}
+
+function anotherHelperFunc(board) {
+  if (board[0][0] === board[1][0] && board[1][0] === board[2][0]) {
+    if (board[0][0] === '') {
+      return false;
+    } else {
+      return true;
+    }
+  } else if (board[0][1] === board[1][1] && board[1][1] === board[2][1]) {
+    if (board[0][1] === '') {
+      return false;
+    } else {
+      return true;
+    }
+  } else if (board[0][2] === board[1][2] && board[1][2] === board[2][2]) {
+    if (board[0][2] === '') {
+      return false;
+    } else {
+      return true;
+    }
+  } else if (board[0][0] === board[1][1] && board[1][1]=== board[2][2]) {
+    if (board[0][0] === '') {
+      return false;
+    } else {
+      return true;
+    }
+  } else if (board[0][2] === board[1][1] && board[1][1] === board[2][0]) {
+    if (board[0][2] === '') {
+      return false;
+    } else {
+      return true;
+    }
+  } else {
+    return false;
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -289,3 +368,4 @@ xdescribe('Testing challenge 6', () => {
     expect(detectTicTacToeWin([['', '', ''], ['O', 'O', ''], ['X', 'O', 'X']])).toEqual(false);
   });
 });
+
