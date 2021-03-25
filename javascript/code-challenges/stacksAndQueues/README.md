@@ -18,5 +18,5 @@ Create a Queue class that has a front property. It creates an empty Queue when i
 
 ## Solution
 <!-- Embedded whiteboard image -->
-![WhiteBoard](./whiteboard_linkedlists.png)
+![WhiteBoard](./whiteboard_stack&queue.png)
 
