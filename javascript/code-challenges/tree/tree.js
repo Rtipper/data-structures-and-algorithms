@@ -57,6 +57,48 @@ class BinarySearchTree extends BinaryTree {
     }
     return false;
   }
+
+  // CC16 BINARY TREE MAX VALUE
+  findMax() {
+    if (this.root === null) {
+      return null;
+    }
+    const helperFunction = (node) => {
+      if (node === null) { return }
+      let maxVal = node.value;
+      let leftMax = helperFunction(node.left);
+      let rightMax = helperFunction(node.right);
+      if (leftMax > maxVal) {
+        maxVal = leftMax;
+      }
+      if (rightMax > maxVal) {
+        maxVal = rightMax;
+      }
+      return maxVal;
+    }
+    return helperFunction(this.root);
+  }
+}
+
+// CC17 BREADTH-FIRST
+class BreadthFirst extends BinaryTree {
+  breadthFirst() {
+    if(!this.root) {
+      return null
+    }
+    let nodes = []
+    let queue = []
+
+    queue.push(this.root)
+    while(queue.length) {
+      let currentNode = queue.shift();
+      nodes.push(currentNode.value)
+      if(currentNode.left) { queue.push(currentNode.left) }
+      if(currentNode.right) { queue.push(currentNode.right) }
+    }
+    return nodes
+  }
 }
 
 module.exports = BinarySearchTree;
+module.exports = BreadthFirst;
