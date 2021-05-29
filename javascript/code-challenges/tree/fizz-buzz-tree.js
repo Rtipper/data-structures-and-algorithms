@@ -2,7 +2,7 @@
 
 const Tree = require('./tree.js');
 
-function fizzBuzz(node) {
+function fizzBuzzTree(node) {
   let newTree = new Tree();
   newTree.root = node;
   let walk = (tempNode) => {
@@ -25,4 +25,4 @@ function fizzBuzz(node) {
   return newTree;
 }
 
-module.exports = fizzBuzz;
+module.exports = fizzBuzzTree;

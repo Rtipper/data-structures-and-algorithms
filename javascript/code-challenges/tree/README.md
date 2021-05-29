@@ -31,3 +31,4 @@ Write an instance method called find-maximum-value. Without utilizing any of the
 ![WhiteBoard](CC15.png)
 ![WhiteBoard](CC16.png)
 ![WhiteBoard](CC17.png)
+![WhiteBoard](CC18.png)
