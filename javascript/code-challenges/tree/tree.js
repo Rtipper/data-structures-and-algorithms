@@ -15,16 +15,29 @@ class BinaryTree {
   }
 
   inOrder(node, nodes = []) {
-    if(node.left) {this.inOrder(node.left, nodes);}
+    if (node.left) { this.inOrder(node.left, nodes); }
     nodes.push(node.value);
-    if(node.right) {this.inOrder(node.right, nodes);}
+    if (node.right) { this.inOrder(node.right, nodes); }
     return nodes;
   }
 
   postOrder(node, nodes = []) {
-    if (node.left) {this.postOrder(node.left, nodes); }
-    if (node.right) {this.postOrder(node.right, nodes); }
+    if (node.left) { this.postOrder(node.left, nodes); }
+    if (node.right) { this.postOrder(node.right, nodes); }
     nodes.push(node.value);
+    return nodes;
+  }
+
+  breadthFirst() {
+    let nodes = [];
+    let queue = [];
+    queue.push(this.root);
+    while (queue.length) {
+      let currentNode = queue.shift();
+      nodes.push(currentNode.value);
+      if (currentNode.left) { queue.push(currentNode.left); }
+      if (currentNode.right) { queue.push(currentNode.right); }
+    }
     return nodes;
   }
 }
@@ -32,73 +45,38 @@ class BinaryTree {
 class BinarySearchTree extends BinaryTree {
   add(value, current = this.root) {
     const newNode = new Node(value);
-    if(!this.root) {
+    if (!this.root) {
       this.root = newNode;
     }
     if (!current) {
       return newNode;
     }
-    if(newNode.value > current.value) {
+    if (newNode.value > current.value) {
       current.right = this.add(value, current.right);
-    } else {
+    } else { // traverse Left
       current.left = this.add(value, current.left);
     }
     return current;
   }
 
-  contains(value) {
-    let current = this.root;
-    while(current) {
-      if (value === current.value) {
-        current = current.right;
-      } else {
-        current = current.left;
-      }
-    }
+  contains(value, node = this.root) {
+    if (value === node.value) { return true; }
+    if (value > node.value) { this.contains(value, node.right); }
+    if (value < node.value) { this.contains(value, node.left); }
     return false;
   }
 
-  // CC16 BINARY TREE MAX VALUE
-  findMax() {
-    if (this.root === null) {
-      return null;
-    }
-    const helperFunction = (node) => {
-      if (node === null) { return }
-      let maxVal = node.value;
-      let leftMax = helperFunction(node.left);
-      let rightMax = helperFunction(node.right);
-      if (leftMax > maxVal) {
-        maxVal = leftMax;
-      }
-      if (rightMax > maxVal) {
-        maxVal = rightMax;
-      }
-      return maxVal;
-    }
-    return helperFunction(this.root);
-  }
-}
-
-// CC17 BREADTH-FIRST
-class BreadthFirst extends BinaryTree {
-  breadthFirst() {
-    if(!this.root) {
-      return null
-    }
-    let nodes = []
-    let queue = []
-
-    queue.push(this.root)
-    while(queue.length) {
+  findMaximumValue(node, largest = 0) {
+    let queue = [];
+    queue.push(this.root);
+    while (queue.length) {
       let currentNode = queue.shift();
-      nodes.push(currentNode.value)
-      if(currentNode.left) { queue.push(currentNode.left) }
-      if(currentNode.right) { queue.push(currentNode.right) }
+      largest = currentNode.value > largest ? currentNode.value : largest;
+      if (currentNode.left) { queue.push(currentNode.left); }
+      if (currentNode.right) { queue.push(currentNode.right); }
     }
-    return nodes
+    return largest;
   }
 }
 
 module.exports = BinarySearchTree;
-module.exports = BreadthFirst;

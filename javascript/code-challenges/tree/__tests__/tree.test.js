@@ -1,28 +1,49 @@
-
 'use strict';
 
-
-let Tree = require('../tree.js');
+const Node = require('../node.js');
+const Tree = require('../tree.js');
+const fizzBuzzTree = require('../fizz-buzz-tree');
 
 describe('Tree Tests', () => {
   let newTree = new Tree();
 
-  it('Will successfully create an empty tree' , () => {
+  // FIZZBUZZ
+  let fizzTree = new Tree();
+  let rootNode = new Node(3);
+  let childNodeA = new Node(5);
+  let childNodeB = new Node(15);
+  let gcNodeA = new Node(1);
+  let gcNodeB = new Node(2);
+  let gcNodeC = new Node(10);
+  let gcNodeD = new Node(11);
+  let gcNodeE = new Node(6);
+
+  childNodeA.children.push(gcNodeA);
+  childNodeA.children.push(gcNodeB);
+  childNodeB.children.push(gcNodeC);
+  childNodeB.children.push(gcNodeD);
+  childNodeB.children.push(gcNodeE);
+  rootNode.children.push(childNodeA);
+  rootNode.children.push(childNodeB);
+
+  fizzTree.root = rootNode;
+
+  it('Can successfully instantiate an empty tree', () => {
     expect(newTree).toBeTruthy();
   });
 
-  it('Will successfully create a tree with a single node at its root ' , () => {
+  it('Can successfully instantiate a tree with a single root node', () => {
     newTree.add(9);
     expect(newTree.root.value).toEqual(9);
   });
 
-  it('Will successfully add a left child and right child to a single root node' , () => {
+  it('Can successfully add a left child and right child to a single root node', () => {
     newTree.add(4);
     expect(newTree.root.left.value).toEqual(4);
     expect();
   });
 
-  it('Will successfully return a collection from a preorder traversal of the tree' , () => {
+  it('Can successfully return a collection from a preorder traversal', () => {
     newTree.add(12);
     newTree.add(3);
     newTree.add(6);
@@ -31,11 +52,35 @@ describe('Tree Tests', () => {
     expect(newTree.preOrder(newTree.root)).toEqual([9, 4, 3, 6, 12, 11, 22]);
   });
 
-  it('Will successfully return a collection from an inorder traversal of the tree' , () => {
+  it('Can successfully return a collection from an inorder traversal', () => {
     expect(newTree.inOrder(newTree.root)).toEqual([3, 4, 6, 9, 11, 12, 22]);
   });
 
-  it('Will successfully return a collection from a postOrder traversal of the tree' , () => {
+  it('Can successfully return a collection from a postOrder traversal', () => {
     expect(newTree.postOrder(newTree.root)).toEqual([3, 6, 4, 11, 22, 12, 9]);
   });
+
+  it('Can successfully return a collection in breadth first order', () => {
+    expect(newTree.breadthFirst()).toEqual([9, 4, 12, 3, 6, 11, 22]);
+  });
+
+  it('Can successfully return the maximum value within the tree', () => {
+    expect(newTree.findMaximumValue(newTree.root)).toEqual(22);
+  });
+
+  it('Can successfully before FizzBuzz on a tree.', () => {
+
+    let x = Object.assign({}, rootNode);
+    let node = fizzBuzzTree(x);
+    console.log(JSON.stringify(node, undefined, 2));
+    expect(node.root.value).toEqual('Fizz');
+    expect(node.root.children[0].value).toEqual('Buzz');
+    expect(node.root.children[0].children[0].value).toEqual('1');
+    expect(node.root.children[0].children[1].value).toEqual('2');
+    expect(node.root.children[1].value).toEqual('FizzBuzz');
+    expect(node.root.children[1].children[0].value).toEqual('Buzz');
+    expect(node.root.children[1].children[1].value).toEqual('11');
+    expect(node.root.children[1].children[2].value).toEqual('Fizz');
+  });
 });
+
