@@ -15,4 +15,4 @@ hash: takes in an arbitrary key and returns an index in the collection.
 - Utilize the .hash(), .set(), .get() & .has() methods as demoed in class during the hashtable review
 
 ## Solution
-![WhiteBoard](CC30.png)
+![WhiteBoard](CC30.PNG)
