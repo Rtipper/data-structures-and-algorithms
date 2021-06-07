@@ -27,6 +27,16 @@ Write an instance method called find-maximum-value. Without utilizing any of the
 - Create and use following methods of .preOrder(), .inOrder() and .postOrder()
 - Create the BinaryTree and BinarySearch Tree classes using methods of add and contains
 
+## Challenge
+CC 17 - Breadth-First
+
+Write a breadth first traversal method which takes a Binary Tree as its unique input. Without utilizing any of the built-in methods available to your language, traverse the input tree using a Breadth-first approach, and return a list of the values in the tree in the order they were encountered.
+
+## Approach & Efficiency
+- Ensure test is working correctly and traversing tree correctly based on methods used
+- Utilize creating both an empty array for both nodes and the queue
+- Utilize the methods of .push() and .shift()
+
 ## Solution
 ![WhiteBoard](CC15.png)
 ![WhiteBoard](CC16.png)
