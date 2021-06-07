@@ -15,30 +15,46 @@ class BinaryTree {
   }
 
   inOrder(node, nodes = []) {
-    if(node.left) {this.inOrder(node.left, nodes);}
+    if (node.left) { this.inOrder(node.left, nodes); }
     nodes.push(node.value);
-    if(node.right) {this.inOrder(node.right, nodes);}
+    if (node.right) { this.inOrder(node.right, nodes); }
     return nodes;
   }
 
   postOrder(node, nodes = []) {
-    if (node.left) {this.postOrder(node.left, nodes); }
-    if (node.right) {this.postOrder(node.right, nodes); }
+    if (node.left) { this.postOrder(node.left, nodes); }
+    if (node.right) { this.postOrder(node.right, nodes); }
     nodes.push(node.value);
     return nodes;
   }
+
+
+    // CC17 BREADTH-FIRST
+    breadthFirst() {
+      let nodes = [];
+      let queue = [];
+      queue.push(this.root);
+      while (queue.length) {
+        let currentNode = queue.shift();
+        nodes.push(currentNode.value);
+        if (currentNode.left) { queue.push(currentNode.left); }
+        if (currentNode.right) { queue.push(currentNode.right); }
+      }
+      return nodes;
+    }
 }
+
 
 class BinarySearchTree extends BinaryTree {
   add(value, current = this.root) {
     const newNode = new Node(value);
-    if(!this.root) {
+    if (!this.root) {
       this.root = newNode;
     }
     if (!current) {
       return newNode;
     }
-    if(newNode.value > current.value) {
+    if (newNode.value > current.value) {
       current.right = this.add(value, current.right);
     } else {
       current.left = this.add(value, current.left);
@@ -48,7 +64,7 @@ class BinarySearchTree extends BinaryTree {
 
   contains(value) {
     let current = this.root;
-    while(current) {
+    while (current) {
       if (value === current.value) {
         current = current.right;
       } else {
@@ -80,25 +96,4 @@ class BinarySearchTree extends BinaryTree {
   }
 }
 
-// CC17 BREADTH-FIRST
-class BreadthFirst extends BinaryTree {
-  breadthFirst() {
-    if(!this.root) {
-      return null
-    }
-    let nodes = []
-    let queue = []
-
-    queue.push(this.root)
-    while(queue.length) {
-      let currentNode = queue.shift();
-      nodes.push(currentNode.value)
-      if(currentNode.left) { queue.push(currentNode.left) }
-      if(currentNode.right) { queue.push(currentNode.right) }
-    }
-    return nodes
-  }
-}
-
 module.exports = BinarySearchTree;
-module.exports = BreadthFirst;

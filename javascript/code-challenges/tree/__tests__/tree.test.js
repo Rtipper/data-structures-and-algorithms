@@ -1,6 +1,4 @@
-
 'use strict';
-
 
 let Tree = require('../tree.js');
 
@@ -38,4 +36,9 @@ describe('Tree Tests', () => {
   it('Will successfully return a collection from a postOrder traversal of the tree' , () => {
     expect(newTree.postOrder(newTree.root)).toEqual([3, 6, 4, 11, 22, 12, 9]);
   });
+
+  it('Will successfully return a collection in breadth-first order', () => {
+    expect(newTree.breadthFirst()).toEqual([9, 4, 12, 3, 6, 11, 22]);
+  })
 });
+
