@@ -15,8 +15,8 @@ describe('Tree Intersection Tests', () => {
   it('Will return an array with correctly matching values.', () => {
     const bst3 = new BST();
     const bst4 = new BST();
-    bst3.add(1).add(2).add(3);
-    bst4.add(3).add(2).add(1);
+    bst3.add(5).add(10).add(15);
+    bst4.add(15).add(10).add(15);
     expect(tree_Intersection(bst3, bst4)).toEqual([ 3, 2, 1 ]);
   });
 });
