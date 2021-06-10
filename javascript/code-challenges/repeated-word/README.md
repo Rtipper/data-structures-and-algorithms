@@ -18,4 +18,4 @@ Without utilizing any of the built-in library methods available to your language
 
 
 ## Solution
-![WhiteBoard](CC31.png)
+![WhiteBoard](CC31.PNG)
