@@ -1,7 +1,9 @@
-# Graph Implementation - CC #35
+# Graph Implementation - CC #35 | #36
 
 ## Challenge
-Implement your own Graph. The graph should be represented as an adjacency list.
+#35: Implement your own Graph. The graph should be represented as an adjacency list.
+
+#36: Implement a breadth-first traversal on a graph.
 
 ## Approach & Efficiency
 - Utilize the following Methods:
@@ -28,5 +30,13 @@ GetNeighbors()
 Size()
 -- Returns the total number of nodes in the graph
 
+Write the following method for the Graph class:
+
+- breadth first
+- Arguments: Node
+- Return: A collection of nodes in the order they were visited.
+- Display the collection
+
 ## Solution
 ![WhiteBoard](CC35.PNG)
+![WhiteBoard](CC36.PNG)
