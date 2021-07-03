@@ -40,5 +40,9 @@ describe('Tree Tests', () => {
   it('Will successfully return a collection in breadth-first order', () => {
     expect(newTree.breadthFirst()).toEqual([9, 4, 12, 3, 6, 11, 22]);
   })
+  
+   it('Will successfully return the maximum value from within the tree', () => {
+    expect(newTree.findMax(newTree.root)).toEqual(22);
+  });
 });
 
